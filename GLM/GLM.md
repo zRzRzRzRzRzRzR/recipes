@@ -3,6 +3,7 @@
 GLM-4.X LLM include those model below:
 
 + GLM-4.7
++ GLM-4.7-Flash
 + GLM-4.6
 + GLM-4.5
 + GLM-4.5-Air
@@ -23,8 +24,8 @@ uv pip install -U vllm --torch-backend auto
 ```
 
 ```bash
-# install the nightly build of vLLM for GLM-4.7
 uv pip install -U vllm --pre --extra-index-url https://wheels.vllm.ai/nightly
+uv pip install git+https://github.com/huggingface/transformers.git # Using latest transformers to support GLM-4.7-Flash
 ```
 
 ## Running GLM-4.5-Air with FP8 or BF16
@@ -57,7 +58,6 @@ GLM-4.X models include built-in Multi-Token Prediction (MTP) layers that can be 
 To enable MTP speculative decoding, add the `--speculative-config` flags to your server command:
 
 ```bash
-
 # Start server with FP8 model on 4xH200
 vllm serve zai-org/GLM-4.7-FP8 \
      --tensor-parallel-size 4 \
